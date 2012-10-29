@@ -1,3 +1,4 @@
+import sys
 import os
 import zc.buildout
 
@@ -41,6 +42,10 @@ def append_env_var(env,var,sep=":",before=True):
     for path in var:
     	if before:os.environ[env] = "%s%s%s" % (path,sep,os.environ.get(env,''))
 	else:os.environ[env] = "%s%s%s" % (os.environ.get(env,''),sep,path)
+
+def h(o,b):
+    if 'freebsd' in sys.platform:
+        os.environ['MAKE'] = 'gmake'
 
 
 # vim:set ts=4 sts=4 et  :
